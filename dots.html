@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- Trinity.H /2023 CSC 372 Spring 2023 -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Dots</title>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+#version 300 es
+precision mediump float;
+
+in vec4 aPosition;
+in vec4 aColor;
+out vec4 vColor;
+
+void main()
+{
+  gl_Position = aPosition;
+  vColor = aColor;
+
+  gl_PointSize = 10.0;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+#version 300 es
+precision mediump float;
+
+in vec4 vColor;
+out vec4 fColor;
+
+void main()
+{
+  fColor = vColor;
+}
+</script>
+
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="dots.js"></script>
+
+</head>
+
+<body>
+  <select id="tChoice" type="dropdown">
+      <option value="0">points</option>
+      <option value="1">triangle strip</option>
+      <option value="2">triangle fan</option>
+      <option value="3">triangles</option>
+    </select>
+    <button id = "clear">
+        clear
+    </button>
+    <button id = "points">
+        Points
+    </button>
+
+  <canvas id="gl-canvas" width="512" height="512">
+    Oops ... your browser doesn't support the HTML5 canvas element
+  </canvas>
+  
+</body>
+</html>
